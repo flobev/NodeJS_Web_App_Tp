@@ -3,8 +3,9 @@ extends layout.pug
 append head
     style 
         include styles/login.css
+        include styles/register.css
 
-    title Connexion
+    title Inscription
 
 block content
     form.form-signin.text-center
@@ -15,7 +16,7 @@ block content
             height="72"
         )
 
-        h1.h3.mb-3.fw-normal Connexion
+        h1.h3.mb-3.fw-normal Inscription
 
         input(
             type="email"
@@ -27,13 +28,21 @@ block content
 
         input(
             type="password"
-            class="form-control mb-4"
+            class="form-control"
             id="password"
             placeholder="Mot de passe"
             required
         )
 
-        button(type="submit" class="btn btn-lg btn-primary btn-block") Me connecter
+        input(
+            type="password"
+            class="form-control mb-4"
+            id="passwordConf"
+            placeholder="Confirmation mot de passe"
+            required
+        )
+
+        button(type="submit" class="btn btn-lg btn-primary btn-block") S'inscrire
 
         div.mt-5
-            a(href="./register") Pas encore de compte ? Inscrivez-vous !
+            a(href="./login") Déjà membre ? Connectez-vous !
