@@ -1,0 +1,29 @@
+{
+  "name": "nodejs_web_app_tp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flobev/NodeJS_Web_App_Tp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/flobev/NodeJS_Web_App_Tp/issues"
+  },
+  "homepage": "https://github.com/flobev/NodeJS_Web_App_Tp#readme",
+  "dependencies": {
+    "babel-register": "^6.26.0",
+    "body-parser": "^1.19.2",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.6",
+    "nodemon": "^2.0.15",
+    "pug": "^3.0.2"
+  }
+}
