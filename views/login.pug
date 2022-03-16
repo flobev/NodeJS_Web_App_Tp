@@ -1,0 +1,36 @@
+extends layout.pug
+
+append head
+    style 
+        include styles/login.css
+    
+    title Connexion
+
+block content
+    form.form-signin.text-center
+        img(
+            class="mb-4"
+            src="https://upload.wikimedia.org/wikipedia/commons/9/93/Google_Contacts_icon.svg"
+            width="72"
+            height="72"
+        )
+
+        h1.h3.mb-3.fw-normal Connexion
+
+        input(
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="Adresse mail"
+            required
+        )
+
+        input(
+            type="password"
+            class="form-control mb-4"
+            id="password"
+            placeholder="Mot de passe"
+            required
+        )
+
+        button(type="submit" class="btn btn-lg btn-primary btn-block") Me connecter
