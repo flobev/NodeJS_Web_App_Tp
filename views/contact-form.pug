@@ -15,43 +15,110 @@ block content
             .input-group
                 span.input-group-text#lastname-addon
                     i.fa-solid.fa-user
-                input(type="text" id="lastname" class="form-control" placeholder="Nom" aria-label="Nom" aria-describedby="lastname-addon")
+                input(
+                    type="text"
+                    id="lastname"
+                    class="form-control"
+                    placeholder="Nom"
+                    aria-label="Nom"
+                    aria-describedby="lastname-addon"
+                    value=contact ? contact.lastname : ''
+                )
         .col-md-6
             .input-group
                 span.input-group-text#firstname-addon
                     i.fa-solid.fa-user
-                input(type="text" id="firstname" class="form-control" placeholder="Prénom" aria-label="Prénom" aria-describedby="firstname-addon")
+                input(
+                    type="text"
+                    id="firstname"
+                    class="form-control"
+                    placeholder="Prénom"
+                    aria-label="Prénom"
+                    aria-describedby="firstname-addon"
+                    value=contact ? contact.firstname : ''
+                )
         .col-md-6
             .input-group
                 span.input-group-text#email-addon
                     i.fa-solid.fa-at
-                input(type="email" id="email" class="form-control" placeholder="Adresse mail" aria-label="Adresse mail" aria-describedby="email-addon")
+                input(
+                    type="email"
+                    id="email"
+                    class="form-control"
+                    placeholder="Adresse mail"
+                    aria-label="Adresse mail"
+                    aria-describedby="email-addon"
+                    value=contact ? contact.email : ''
+                )
         .col-md-6
             .input-group
                 span.input-group-text#tel-addon
                     i.fa-solid.fa-phone
-                input(type="tel" id="tel" class="form-control" placeholder="N° téléphone" aria-label="Numéro de téléphone" aria-describedby="tel-addon")
+                input(
+                    type="tel"
+                    id="tel"
+                    class="form-control"
+                    placeholder="N° téléphone"
+                    aria-label="Numéro de téléphone"
+                    aria-describedby="tel-addon"
+                    value=contact ? contact.tel : ''
+                )
         .col-md-12
             .input-group
                 span.input-group-text#address-addon
                     i.fa-solid.fa-house
-                input(type="text" id="address" class="form-control" placeholder="Adresse postale" aria-label="Adresse postale" aria-describedby="address-addon")
+                input(
+                    type="text"
+                    id="address"
+                    class="form-control"
+                    placeholder="Adresse postale"
+                    aria-label="Adresse postale"
+                    aria-describedby="address-addon"
+                    value=contact ? contact.address : ''
+                )
         .col-md-6
             .input-group
                 span.input-group-text#city-addon
                     i.fa-solid.fa-city
-                input(type="text" id="city" class="form-control" placeholder="Ville" aria-label="Ville" aria-describedby="city-addon")
+                input(
+                    type="text"
+                    id="city"
+                    class="form-control"
+                    placeholder="Ville"
+                    aria-label="Ville"
+                    aria-describedby="city-addon"
+                    value=contact ? contact.city : ''
+                )
         .col-md-3
             .input-group
                 span.input-group-text#zipcode-addon
                     i.fa-solid.fa-hashtag
-                input(type="text" id="zipcode" class="form-control" placeholder="Code postal" aria-label="Code postal" aria-describedby="zipcode-addon")
+                input(
+                    type="text"
+                    id="zipcode"
+                    class="form-control"
+                    placeholder="Code postal"
+                    aria-label="Code postal"
+                    aria-describedby="zipcode-addon"
+                    value=contact ? contact.zipcode : ''
+                )
         .col-md-3.mb-5
             .input-group
                 span.input-group-text#country-addon
                     i.fa-solid.fa-flag
-                input(type="text" id="country" class="form-control" placeholder="Pays" aria-label="Pays" aria-describedby="country-addon")
+                input(
+                    type="text"
+                    id="country"
+                    class="form-control"
+                    placeholder="Pays"
+                    aria-label="Pays"
+                    aria-describedby="country-addon"
+                    value=contact ? contact.country : ''
+                )
         .col-md-6
-            button(type="submit" class="btn btn-primary") Ajouter
+            if contact
+                button(type="submit" class="btn btn-primary") Modifier
+            else 
+                button(type="submit" class="btn btn-primary") Ajouter
         .col-md-6
             a(href="../" class="btn btn-secondary") Annuler
