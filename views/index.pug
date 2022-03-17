@@ -7,6 +7,8 @@ append head
   title Accueil
 
 block content
+  - var editContactUrl = './contact/edit/'
+
   include components/navbar.pug
 
   .container
@@ -26,7 +28,7 @@ block content
               td= contact.lastname
               td.d-flex.justify-content-center
                 i(class="fa-solid fa-eye" 'onclick'='showContactModal('+JSON.stringify(contact)+')')
-                a(href="./contact/edit/" + contact.id)
+                a(href=editContactUrl + contact.id)
                   i.fa-solid.fa-pen.mx-2
                 i(class="fa-solid fa-trash" 'onclick'='deleteContactModal('+JSON.stringify(contact)+')')
 

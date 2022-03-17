@@ -8,6 +8,8 @@ append head
     title Inscription
 
 block content
+    - var loginUrl = './login'
+    
     form.form-signin.text-center
         img(
             src="https://upload.wikimedia.org/wikipedia/commons/9/93/Google_Contacts_icon.svg"
@@ -45,4 +47,4 @@ block content
         button(type="submit" class="btn btn-lg btn-primary btn-block") S'inscrire
 
         div.mt-5
-            a(href="./login") Déjà membre ? Connectez-vous !
+            a(href=loginUrl) Déjà membre ? Connectez-vous !

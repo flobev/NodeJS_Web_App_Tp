@@ -7,6 +7,8 @@ append head
     title Connexion
 
 block content
+    - var registerUrl = './register'
+
     form.form-signin.text-center
         img(
             src="https://upload.wikimedia.org/wikipedia/commons/9/93/Google_Contacts_icon.svg"
@@ -36,4 +38,4 @@ block content
         button(type="submit" class="btn btn-lg btn-primary btn-block") Me connecter
 
         div.mt-5
-            a(href="./register") Pas encore de compte ? Inscrivez-vous !
+            a(href=registerUrl) Pas encore de compte ? Inscrivez-vous !
