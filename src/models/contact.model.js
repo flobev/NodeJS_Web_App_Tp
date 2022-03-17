@@ -2,10 +2,7 @@ const mongoose = require('mongoose');
 const { connexDb } = require("../../config/default");
 const AutoIncrement = require('mongoose-auto-increment');
 
-const userSchema = new mongoose.Schema({
-    _id: {
-        type: mongoose.Schema.Types.ObjectId
-    },
+const contactSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -20,12 +17,7 @@ const userSchema = new mongoose.Schema({
     },
     mail:{
         type: String,
-        required: true,
-        unique: true
-    },
-    mdp:{
-        type: String,
-        required: true,
+        required: false,
     },
     adresse:{
         numero: {
@@ -45,11 +37,11 @@ const userSchema = new mongoose.Schema({
             required: false,
         }
     },
-    contacts: [{type: mongoose.Schema.Types.ObjectId, ref: 'Contact'}]
+    _user: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
 });
 
 /* user.plugin(AutoIncrement.plugin, 'User'); */
 
-const userModel = mongoose.model('User', userSchema);
+const contactModel = mongoose.model('Contact', contactSchema);
 
-module.exports = userModel;
+module.exports = contactModel;
