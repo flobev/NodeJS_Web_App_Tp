@@ -10,49 +10,54 @@ block content
   include components/navbar.pug
 
   .container
-    table.table
-      thead
-        tr.text-center
-          th(scope="col" class="table-dark") Prénom 
-          th(scope="col" class="table-dark") Nom
-          th(scope="col" class="table-dark") Actions
-      tbody
-        each contact in contactList 
+    if contactList.length == 0
+        h3.text-center Vous n'avez pas ajouté de contact pour le moment.
+    else
+      table.table
+        thead
           tr.text-center
-            td= contact.firstname 
-            td= contact.lastname
-            td.d-flex.justify-content-center
-              i(class="fa-solid fa-eye" 'onclick'='showContactModal('+JSON.stringify(contact)+')')
-              a(href="./contact/edit/" + contact.id)
-                i.fa-solid.fa-pen.mx-2
-              i(class="fa-solid fa-trash" 'onclick'='deleteContactModal('+JSON.stringify(contact)+')')
+            th(scope="col" class="table-dark") Prénom 
+            th(scope="col" class="table-dark") Nom
+            th(scope="col" class="table-dark") Actions
+        tbody
+          each contact in contactList 
+            tr.text-center
+              td= contact.firstname 
+              td= contact.lastname
+              td.d-flex.justify-content-center
+                i(class="fa-solid fa-eye" 'onclick'='showContactModal('+JSON.stringify(contact)+')')
+                a(href="./contact/edit/" + contact.id)
+                  i.fa-solid.fa-pen.mx-2
+                i(class="fa-solid fa-trash" 'onclick'='deleteContactModal('+JSON.stringify(contact)+')')
 
-  div(class="modal fade" id="showContactModal" tabindex="-1" aria-labelledby="showContactModalLabel" aria-hidden="true")
-    div(class="modal-dialog mx-auto" style="max-width: 288px;") 
-      div(class="modal-content" style="border: none;") 
-        div(class="card text-center")
-          img(src="./assets/frame.png" class="card-img-top" alt="VCARD")
-          .card-body
-            h5.card-title#contactFullname
-            
-            p.card-text#contactEmail 
-            p.card-text#contactMobile
+  if contactList.length > 0
+    div(class="modal fade" id="showContactModal" tabindex="-1" aria-labelledby="showContactModalLabel" aria-hidden="true")
+      div(class="modal-dialog mx-auto" style="max-width: 288px;") 
+        div(class="modal-content" style="border: none;") 
+          div(class="card text-center")
+            img(src="./assets/frame.png" class="card-img-top" alt="VCARD")
+            .card-body
+              h5.card-title#contactFullname
+              
+              p.card-text#contactEmail 
+              p.card-text#contactMobile
 
-  div(class="modal fade" id="deleteContactModal" tabindex="-1" aria-labelledby="deleteContactModalLabel" aria-hidden="true")
-    .modal-dialog 
-      .modal-content 
-        .modal-header 
-          h5(class="modal-title" id="deleteContactModalLabel") Confirmation de suppression
-          button(type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close")
-        .modal-body 
-          p Vous êtes sur le point de supprimer le contact 
-            span#deleteContactFullname.fw-bold
-            span .
-          p Êtes-vous sûr(e) ?
-        .modal-footer 
-          button(type="button" class="btn btn-danger" data-bs-dismiss="modal") Supprimer le contact
-          button(type="button" class="btn btn-secondary" data-bs-dismiss="modal") Annuler
+    div(class="modal fade" id="deleteContactModal" tabindex="-1" aria-labelledby="deleteContactModalLabel" aria-hidden="true")
+      .modal-dialog 
+        .modal-content 
+          .modal-header 
+            h5(class="modal-title" id="deleteContactModalLabel") Confirmation de suppression
+            button(type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close")
+          .modal-body 
+            p Vous êtes sur le point de supprimer le contact 
+              span#deleteContactFullname.fw-bold
+              span .
+            p Êtes-vous sûr(e) ?
+          .modal-footer 
+            button(type="button" class="btn btn-danger" data-bs-dismiss="modal") Supprimer le contact
+            button(type="button" class="btn btn-secondary" data-bs-dismiss="modal") Annuler
 
-append scripts 
-  script
-    include scripts/index.js
+append scripts
+  if contactList.length > 0
+    script
+      include scripts/index.js
