@@ -1,10 +1,11 @@
-i {
+.table i {
     color: white;
     padding: 5px;
     border-radius: 3px;
+    cursor: pointer;
 }
 
-i:hover {
+.table i:hover {
     transform: scale(1.2);
 }
 
