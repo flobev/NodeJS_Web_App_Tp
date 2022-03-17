@@ -1,8 +1,6 @@
 // Importation du module 'babel-register'
 require('babel-register');
-
 const { connexDb } = require("./config/default.js");
-
 // Exportation du module 'express' permettant de créer un serveur
 const express = require('express');
 
@@ -12,8 +10,12 @@ const bodyParser = require('body-parser');
 // Création d'une instance de express
 const app = express();
 
+
+
+
 app.use(bodyParser.json()); // Permet de parser les données JSON
 app.use(bodyParser.urlencoded({ extended: true })); // Permet de parser les données urlencoded
+
 
 // HTTP request, HTTP response, next function
 app.use((req, res, next) => {
@@ -28,7 +30,7 @@ app.get('/api', function(req, res){
 
 app.post('/add_member', async (req, res) => {
     const user = new userModel(req.body);
-
+    
     try {
         await user.save();
         res.send(user);
@@ -37,6 +39,7 @@ app.post('/add_member', async (req, res) => {
     }
     /* res.render(); */
 });
+
 
 app.listen(8080, () => {
     console.log('Server is running at http://localhost:8080')
