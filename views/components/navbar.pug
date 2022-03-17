@@ -1,0 +1,31 @@
+nav(class="navbar navbar-expand-lg navbar-dark bg-dark mb-5")
+    .container-fluid 
+        a(class="navbar-brand d-flex align-items-center" href="./")
+            img(
+                src="https://upload.wikimedia.org/wikipedia/commons/9/93/Google_Contacts_icon.svg"
+                alt="EasyContact logo"
+                width="30"
+                height="24"
+                class="d-inline-block align-text-top"
+            )
+            span.mx-2 EasyContact
+        
+        button(
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        )
+            span.navbar-toggler-icon 
+        
+        div#navbarSupportedContent.collapse.navbar-collapse
+            ul.navbar-nav.me-auto.mb-2.mb-lg-0 
+                li.nav-item 
+                    a(class="nav-link active" aria-current="page" href="./") Accueil 
+                li.nav-item 
+                    a(class="nav-link" href="./contact/create") Ajouter un contact
+                li.nav-item 
+                    a(class="nav-link" href="./logout") Déconnexion

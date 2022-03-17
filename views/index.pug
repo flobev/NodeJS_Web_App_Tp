@@ -1,33 +1,36 @@
-extends layout.pug
+extends components/layout.pug
 
 append head
   style
     include styles/index.css
+
   title Accueil
 
 block content
-  //- div(class="card" style="width: 18rem;")
-  //-   .card-header Contacts
-  //-   ul.list-group.list-group-flush 
-  //-     each val in contact 
-  //-       li.list-group-item
-  //-         a(href="#")= val.name
+  include components/navbar.pug
+    //- div(class="card" style="width: 18rem;")
+    //-   .card-header Contacts
+    //-   ul.list-group.list-group-flush 
+    //-     each val in contact 
+    //-       li.list-group-item
+    //-         a(href="#")= val.name
 
-  table.table 
-    thead 
-      tr 
-        th(scope="col" class="table-dark") Prénom 
-        th(scope="col" class="table-dark") Nom
-        th(scope="col" class="table-dark") Actions
-    tbody
-      each val in contact 
-        tr 
-          td= val.firstname 
-          td= val.lastname
-          td(style="display: flex;")
-            div
-              i.fa-solid.fa-eye
-            div
-              i.fa-solid.fa-pen
-            div
-              i.fa-solid.fa-trash
+  .container
+    table.table
+      thead
+        tr.text-center
+          th(scope="col" class="table-dark") Prénom 
+          th(scope="col" class="table-dark") Nom
+          th(scope="col" class="table-dark") Actions
+      tbody
+        each val in contact 
+          tr.text-center
+            td= val.firstname 
+            td= val.lastname
+            td.d-flex.justify-content-center
+              a(href="./api/contact/" + val.id)
+                i.fa-solid.fa-eye
+              a(href="./api/contact/edit/" + val.id)
+                i.fa-solid.fa-pen.mx-2
+              a(href="./api/contact/delete/" + val.id)
+                i.fa-solid.fa-trash

@@ -1,7 +1,21 @@
 i {
-    background-color: #0d6efd;
     color: white;
-    padding: 3px;
+    padding: 5px;
     border-radius: 3px;
-    margin-right: 10px;
+}
+
+i:hover {
+    transform: scale(1.2);
+}
+
+i.fa-eye {
+    background-color: #00b700;
+}
+
+i.fa-pen {
+    background-color: #0d6efd;
+}
+
+i.fa-trash {
+    background-color: red;
 }
