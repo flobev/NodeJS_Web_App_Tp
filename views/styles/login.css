@@ -28,6 +28,10 @@ body {
 }
 
 .form-signin button {
-    display: block;
     width: 100%;
+}
+
+.alert {
+    padding: 12px;
+    min-height: 50px;
 }
