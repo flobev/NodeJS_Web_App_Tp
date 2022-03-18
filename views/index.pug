@@ -24,7 +24,7 @@ block content
             th(scope="col" class="table-dark") Actions
         tbody
           each contact in contactList 
-            tr.text-center
+            tr(class="text-center" id=contact.id)
               td= contact.firstname 
               td= contact.lastname
               td.d-flex.justify-content-center

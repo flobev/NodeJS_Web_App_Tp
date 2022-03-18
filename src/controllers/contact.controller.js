@@ -18,9 +18,16 @@ exports.register = (req, res, next) => {
         })
     })
     .catch(error => {
+        let message = "Erreur lors de l'ajout du contact";
+        
+        if (error.errors['lastname'])
+            message = error.errors['lastname'].message
+        else if (error.errors['firstname'])
+            message = error.errors['firstname'].message
+
         res.json({
             error: true,
-            message: "Erreur lors de l'ajout du contact."
+            message: message
         })
     })
 }

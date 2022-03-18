@@ -1,3 +1,4 @@
+const deleteModal = new bootstrap.Modal(document.querySelector('#deleteContactModal'), {})
 let error = false;
 let apiMsg = '';
 
@@ -26,11 +27,20 @@ async function deleteContact(contactId) {
 
 async function validDelete(contactId) {
     await deleteContact(contactId);
-
-    // const deleteContactModal = new bootstrap.Modal(document.querySelector('#deleteContactModal'), {})
-    // deleteContactModal.hide();
-
-    console.log(apiMsg);
+    
+    deleteModal.hide();
+    
+    const alert = document.querySelector('.alert');
+    alert.innerHTML = apiMsg;
+  
+    if (error)
+        alert.classList.replace('alert-success', 'alert-danger');
+    else {
+        document.getElementById(contactId).remove();
+        alert.classList.replace('alert-danger', 'alert-success');
+    }
+    
+    alert.classList.add('show');
 }
 
 function showContactModal(contact) {
@@ -47,12 +57,11 @@ function showContactModal(contact) {
 }
 
 function deleteContactModal(contact) {
-    const deleteContactModal = new bootstrap.Modal(document.querySelector('#deleteContactModal'), {})
     const fullname = document.querySelector('#deleteContactFullname');
     const deleteBtn = document.querySelector('#deleteBtn')
 
     fullname.innerHTML = `${contact.firstname} ${contact.lastname}`
     deleteBtn.addEventListener('click', event => validDelete(contact._id), {once: true})
 
-    deleteContactModal.show();
+    deleteModal.show();
 }

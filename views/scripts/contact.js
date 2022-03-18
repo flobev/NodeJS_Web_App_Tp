@@ -49,10 +49,25 @@ async function addContact() {
 async function validContact() {
     await addContact();
 
-    if (error) // error true => api down ou erreur lors de l'insertion
-        console.log(apiMsg);
-    else // error false
-        console.log(apiMsg);
+    const alert = document.querySelector('.alert');
+    alert.innerHTML = apiMsg;
+
+    if (error)
+        alert.classList.replace('alert-success', 'alert-danger');
+    else {
+        document.querySelector('#firstname').value = '';
+        document.querySelector('#lastname').value = '';
+        document.querySelector('#email').value = '';
+        document.querySelector('#tel').value = '';
+        document.querySelector('#street').value = '';
+        document.querySelector('#city').value = '';
+        document.querySelector('#zipcode').value = '';
+        document.querySelector('#country').value = '';
+        
+        alert.classList.replace('alert-danger', 'alert-success');
+    }
+
+    alert.classList.add('show');
 }
 
 async function editContact(contactId) {
@@ -103,8 +118,13 @@ async function editContact(contactId) {
 async function validEditContact(contact) {
     await editContact(contact._id);
     
-    if (error) // error true => api down ou erreur lors de la modification
-        console.log(apiMsg);
-    else // error false
-        console.log(apiMsg);
+    const alert = document.querySelector('.alert');
+    alert.innerHTML = apiMsg;
+
+    if (error)
+        alert.classList.replace('alert-success', 'alert-danger');
+    else
+        alert.classList.replace('alert-danger', 'alert-success');
+
+    alert.classList.add('show');
 }

@@ -20,3 +20,7 @@ i.fa-pen {
 i.fa-trash {
     background-color: red;
 }
+
+.alert {
+    min-height: 58px;
+}

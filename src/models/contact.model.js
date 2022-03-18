@@ -5,11 +5,11 @@ const AutoIncrement = require('mongoose-auto-increment');
 const contactSchema = new mongoose.Schema({
     firstname: {
         type: String,
-        required: true,
+        required: [true, 'Le prénom est requis.'],
     },
     lastname: {
         type: String,
-        required: true,
+        required: [true, 'Le nom est requis.'],
     },
     tel:{
         type: String,
