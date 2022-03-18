@@ -1,18 +1,19 @@
 const mongoose = require('mongoose');
 const { connexDb } = require("../../config/default");
 const AutoIncrement = require('mongoose-auto-increment');
-
-const userSchema = new mongoose.Schema({
-    _id: {
+const passportLocalMongoose = require('passport-local-mongoose');
+/* _id: {
         type: mongoose.Schema.Types.ObjectId
-    },
-    name: {
+    }, */
+     /* contacts: [{type: mongoose.Schema.Types.ObjectId, ref: 'Contact'}] */
+const userSchema = new mongoose.Schema({
+    username: {
         type: String,
         required: true,
     },
     lastname: {
         type: String,
-        required: true,
+        required: false,
     },
     tel:{
         type: String,
@@ -21,9 +22,8 @@ const userSchema = new mongoose.Schema({
     mail:{
         type: String,
         required: true,
-        unique: true
     },
-    mdp:{
+    password: {
         type: String,
         required: true,
     },
@@ -44,10 +44,10 @@ const userSchema = new mongoose.Schema({
             type: String,
             required: false,
         }
-    },
-    contacts: [{type: mongoose.Schema.Types.ObjectId, ref: 'Contact'}]
+    }
 });
 
+userSchema.plugin(passportLocalMongoose);
 /* user.plugin(AutoIncrement.plugin, 'User'); */
 
 const userModel = mongoose.model('User', userSchema);
