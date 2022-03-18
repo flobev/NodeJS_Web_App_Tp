@@ -1,49 +1,25 @@
 var express = require('express');
 var app = express();
-var contactModel = require('../models/contact.model');
 const userController = require('../controllers/user.controller');
 const contactController = require('../controllers/contact.controller');
+const contactModel = require('../models/contact.model');
 
-app.get('/all_Contacts', async (req, res) => {
+app.get('/', async function(req, res) {
     const contacts = await contactModel.find({});
-
-  try {
-    res.send(contacts);
-  } catch (error) {
-    res.status(500).send(error);
-  }
+    res.render('index', { contactList: contacts });
 });
 
-app.get('/', function(req, res) {
-
+app.get('/contact/new', function(req, res){
+    res.render('contact-form');
 });
 
-app.get('/contact', function(req, res){
-    res.render();
+app.get('/contact/:id', async function(req, res) {
+    // Il faut rechercher un contact par son id et par l'id de l'utilisateur connecté, sinon erreur.
+    // const contact = await contactModel.find({ id: req.params.id, userId: passportJsId });
+    const contact = await contactModel.findById(req.params.id);
+    res.render('contact-form', { contact: contact });
 });
 
-app.post('/add_contact', async (req, res) => {
-    const contacts = new contactModel(req.body);
-
-    try {
-        await contacts.save();
-        res.send(contacts);
-        console.log(contacts);
-    } catch (error) {
-        res.status(500).send(error);
-    }
-    /* res.render(); */
-});
-
-app.post('/modify_contact', function(req, res){
-    res.render();
-});
-
-app.delete('/delete_contact', function(req, res){
-    res.render();
-});
-
-app.post('/register', userController.register);
-app.post('/register/contact', contactController.register);
+app.post('/contact/add', contactController.register);
 
 module.exports = app;

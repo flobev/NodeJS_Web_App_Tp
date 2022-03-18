@@ -5,9 +5,8 @@ const crypto = require('crypto');
 
 exports.register = (req, res, next) => {
     crypto.pbkdf2("secret", "salt", 100000, 64, 'sha512', function(err, hashedPassword) {
-        if (err) { return res.json({
-            error: err
-        }) }        
+        if (err)
+            return res.json({ error: err })
 
     /* bcrypt.hash(req.body.password, 10, function (err, hashedPass) {
         if(err) {

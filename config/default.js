@@ -1,5 +1,3 @@
-/* const mongoose = require('mongoose'); */
-
 exports.connexDb = function(){
     let mongoBdd = {
         port: 1337,
@@ -10,6 +8,3 @@ exports.connexDb = function(){
 
     return mongoBdd;
 }
-
-
-

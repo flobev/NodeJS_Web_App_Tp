@@ -2,11 +2,11 @@ function showContactModal(contact) {
     const contactModal = new bootstrap.Modal(document.querySelector('#showContactModal'), {})
     const fullname = document.querySelector('#contactFullname');
     const email = document.querySelector('#contactEmail');
-    const mobile = document.querySelector('#contactMobile');
+    const tel = document.querySelector('#contactTel');
     
     fullname.innerHTML = `${contact.firstname} ${contact.lastname}`
     email.innerHTML = contact.email;
-    mobile.innerHTML = contact.mobile;
+    tel.innerHTML = contact.tel;
 
     contactModal.show();
 }

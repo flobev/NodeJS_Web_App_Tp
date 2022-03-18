@@ -3,7 +3,7 @@ const { connexDb } = require("../../config/default");
 const AutoIncrement = require('mongoose-auto-increment');
 
 const contactSchema = new mongoose.Schema({
-    name: {
+    firstname: {
         type: String,
         required: true,
     },
@@ -15,32 +15,30 @@ const contactSchema = new mongoose.Schema({
         type: String,
         required: false,
     },
-    mail:{
+    email:{
         type: String,
         required: false,
     },
-    adresse:{
-        numero: {
+    address:{
+        street: {
             type: String,
             required: false,
         },
-        rue: {
+        city: {
             type: String,
             required: false,
         },
-        ville: {
+        zipcode: {
             type: String,
             required: false,
         },
-        codePostal: {
+        country: {
             type: String,
             required: false,
         }
     },
-    _user: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
+    // _user: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
 });
-
-/* user.plugin(AutoIncrement.plugin, 'User'); */
 
 const contactModel = mongoose.model('Contact', contactSchema);
 

@@ -7,7 +7,8 @@ append head
   title Accueil
 
 block content
-  - var editContactUrl = './contact/edit/'
+  - var baseUrl = 'http://localhost:3000'
+  - var editContactUrl = `${baseUrl}/contact/`
 
   include components/navbar.pug
 
@@ -42,7 +43,7 @@ block content
               h5.card-title#contactFullname
               
               p.card-text#contactEmail 
-              p.card-text#contactMobile
+              p.card-text#contactTel
 
     div(class="modal fade" id="deleteContactModal" tabindex="-1" aria-labelledby="deleteContactModalLabel" aria-hidden="true")
       .modal-dialog 

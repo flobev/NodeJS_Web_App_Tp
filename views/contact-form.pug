@@ -65,16 +65,16 @@ block content
                 )
         .col-md-12
             .input-group
-                span.input-group-text#address-addon
+                span.input-group-text#street-addon
                     i.fa-solid.fa-house
                 input(
                     type="text"
-                    id="address"
+                    id="street"
                     class="form-control"
                     placeholder="Adresse postale"
                     aria-label="Adresse postale"
-                    aria-describedby="address-addon"
-                    value=contact ? contact.address : ''
+                    aria-describedby="street-addon"
+                    value=contact ? contact.address.street : ''
                 )
         .col-md-6
             .input-group
@@ -87,7 +87,7 @@ block content
                     placeholder="Ville"
                     aria-label="Ville"
                     aria-describedby="city-addon"
-                    value=contact ? contact.city : ''
+                    value=contact ? contact.address.city : ''
                 )
         .col-md-3
             .input-group
@@ -100,7 +100,7 @@ block content
                     placeholder="Code postal"
                     aria-label="Code postal"
                     aria-describedby="zipcode-addon"
-                    value=contact ? contact.zipcode : ''
+                    value=contact ? contact.address.zipcode : ''
                 )
         .col-md-3.mb-5
             .input-group
@@ -113,12 +113,16 @@ block content
                     placeholder="Pays"
                     aria-label="Pays"
                     aria-describedby="country-addon"
-                    value=contact ? contact.country : ''
+                    value=contact ? contact.address.country : ''
                 )
         .col-md-6
             if contact
-                button(type="submit" class="btn btn-primary") Modifier
+                button(type="button" class="btn btn-primary" 'onclick'='validEditContact()') Modifier
             else 
-                button(type="submit" class="btn btn-primary") Ajouter
+                button(type="button" class="btn btn-primary" 'onclick'='validContact()') Ajouter
         .col-md-6
             a(href="../" class="btn btn-secondary") Annuler
+
+append scripts
+    script 
+        include scripts/contact.js
