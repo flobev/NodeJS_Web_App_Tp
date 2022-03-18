@@ -117,7 +117,7 @@ block content
                 )
         .col-md-6
             if contact
-                button(type="button" class="btn btn-primary" 'onclick'='validEditContact()') Modifier
+                button(type="button" class="btn btn-primary" 'onclick'='validEditContact(' + JSON.stringify(contact) + ')') Modifier
             else 
                 button(type="button" class="btn btn-primary" 'onclick'='validContact()') Ajouter
         .col-md-6
