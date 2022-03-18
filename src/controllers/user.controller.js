@@ -3,7 +3,7 @@ const localStrategy = require('passport-local');
 const crypto = require('crypto');
 
 
-exports.register = (req, res, next) => {
+const register = (req, res, next) => {
     crypto.pbkdf2("secret", "salt", 100000, 64, 'sha512', function(err, hashedPassword) {
         if (err) { return res.json({
             error: err
@@ -16,14 +16,13 @@ exports.register = (req, res, next) => {
             })
         }
     }); */
-        console.log('hash', hashedPassword.toString())
-        const user = new UserModel({
-            id: req.body._id,
+        console.log('hash', hashedPassword)
+        let user = new UserModel({
             name: req.body.name,
             lastname: req.body.lastname,
             tel: req.body.tel,
             mail: req.body.mail,
-            mdp: hashedPassword,
+            password: hashedPassword,
             adresse: {
                 numero: req.body.numero,
                 rue: req.body.rue,
@@ -33,9 +32,9 @@ exports.register = (req, res, next) => {
         });
         console.log('ricardo');
         user.save()
-        .then(res => {
+        .then(() => {
             console.log('111', res)
-            res.status(200).send({
+            res.json({
                 message: "User added !"
             })
         })
@@ -47,3 +46,5 @@ exports.register = (req, res, next) => {
         })
     });
 }
+
+module.exports = {register};
